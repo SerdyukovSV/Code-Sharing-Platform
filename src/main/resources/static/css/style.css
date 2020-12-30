@@ -1,0 +1,23 @@
+pre {
+    border: 0px solid #00637B;
+    border-left-width: thick;
+    background-color: #f1f1f1;
+    font-family: Courier;
+    margin-top: 5px;
+    font-size:14px;
+}
+
+span {
+    color: green;
+}
+
+#views_restriction, #time_restriction {
+    color: black;
+    text-decoration: underline;
+}
+
+div {
+    display: inline-block;
+    font-size:15px;
+    width: auto;
+}
