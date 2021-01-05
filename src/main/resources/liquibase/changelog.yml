@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: gartanis
+      changes:
+        - createTable:
+            tableName: snippet
+            remarks: Source code instance
+            columns:
+              - column:
+                  name: uuid
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: snippet_pk
+                    nullable: false
+              - column:
+                  name: code
+                  type: VARCHAR(100000)
+              - column:
+                  name: date
+                  type: TIMESTAMP
+              - column:
+                  name: time
+                  type: TIME
+              - column:
+                  name: views
+                  type: INTEGER
+#                  constraints:
+#                    nullable: false
+              - column:
+                  name: restrict_time
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: restrict_view
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: gartanis
+      changes:
+        - addNotNullConstraint:
+            columnName: views
+            columnDataType: INTEGER
+            defaultNullValue: 0
+            schemaName: public
+            tableName: snippet
+            validate: true

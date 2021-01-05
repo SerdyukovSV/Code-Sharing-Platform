@@ -14,10 +14,7 @@ public class Snippet {
 
     @Id
     private UUID uuid = UUID.randomUUID();
-
-    @Column(length = 10000)
     private String code;
-
     private LocalDateTime date = LocalDateTime.now();
     private LocalTime time;
     private int views;
@@ -81,11 +78,13 @@ public class Snippet {
     @Override
     public String toString() {
         return "Snippet{" +
-                ", uuid=" + uuid +
+                "uuid=" + uuid +
                 ", code='" + code + '\'' +
                 ", date=" + date +
                 ", time=" + time +
                 ", views=" + views +
+                ", restrictTime=" + restrictTime +
+                ", restrictView=" + restrictView +
                 '}';
     }
 }
