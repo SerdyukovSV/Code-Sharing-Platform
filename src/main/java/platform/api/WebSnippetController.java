@@ -29,12 +29,12 @@ public class WebSnippetController {
     }
 
     @GetMapping("/code/{uuid}")
-    public String getByIdSnippet(@PathVariable UUID uuid, Model model) throws ResourceNotFoundException {
+    public String getBySnippetId(@PathVariable UUID uuid, Model model) throws ResourceNotFoundException {
         Snippet snippet = snippetRepository.findByUuid(uuid)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         if (isRestrict(snippet)) {
             snippetRepository.save(snippet);
-        } else {
+        } else if (snippet.isRestrictTime() || snippet.isRestrictView()){
             snippetRepository.delete(snippet);
             throw new ResourceNotFoundException("Snippet not found for id: " + uuid);
         }
